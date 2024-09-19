@@ -1,3 +1,6 @@
+import landingimage from "../assets/landing.png";
+import appDownloadImage from "../assets/appDownload.png";
+
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-12">
@@ -6,6 +9,19 @@ export default function HomePage() {
           Tuck into a Takeaway today
         </h1>
         <span className="text-xl">Food is just a click away!</span>
+      </div>
+      <div className="grid md:grid-cols-2 gap-5">
+        <img src={landingimage} alt="" />
+        <div className="flex flex-col items-center justify-center gap-4 text-center">
+          <span className="font-bold text-3xl tracking-tighter">
+            Order taken even faster!
+          </span>
+          <span>
+            Download the Bite-Blitz App for faster ordering and personalized
+            recommendations
+          </span>
+          <img src={appDownloadImage} alt="" />
+        </div>
       </div>
     </div>
   );
