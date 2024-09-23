@@ -6,4 +6,5 @@ const router = express.Router();
 
 // this path: /api/my/user
 router.post("/", jwtCheck, MyUserController.createCurrentUser);
+router.post("/", MyUserController.updateCurrentUser);
 export default router;
