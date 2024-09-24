@@ -26,16 +26,14 @@ const updateCurrentUser = async (req: Request, res: Response) => {
     const { name, addressLine1, country, city } = req.body;
     const user = await User.findById(req.userId);
     if (!user) {
-      res.status(404).json({ msg: "User not found" });
+      return res.status(404).json({ msg: "User not found" });
     }
-
     user.name = name;
     user.addressLine1 = addressLine1;
     user.city = city;
     user.country = country;
-
     await user.save();
-    res.send(user);
+    res.status(200).send(user);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Error Updating User" });
