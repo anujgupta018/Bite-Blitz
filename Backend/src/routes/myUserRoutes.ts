@@ -7,7 +7,7 @@ const router = express.Router();
 
 // this path: /api/my/user
 router.post("/", jwtCheck, MyUserController.createCurrentUser);
-router.post(
+router.put(
   "/",
   jwtCheck,
   jwtParse,

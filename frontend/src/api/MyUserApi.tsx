@@ -55,6 +55,7 @@ export const useUpdateMyUser = () => {
       body: JSON.stringify(formData),
     });
     if (!response.ok) {
+      console.log(response);
       throw new Error("Failed to update user");
     }
     return response.json();
@@ -63,9 +64,9 @@ export const useUpdateMyUser = () => {
     mutateAsync: updateUser,
     isLoading,
     isError,
-    isSuccess,
-    error,
     reset,
+    error,
+    isSuccess,
   } = useMutation(updateMyUserRequest);
   return { updateUser, isLoading };
 };
