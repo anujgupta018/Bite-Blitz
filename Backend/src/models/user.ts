@@ -9,6 +9,7 @@ import mongoose from "mongoose";
 //   country?: string;
 // }
 const userSchema = new mongoose.Schema({
+  // id: ObjectId,
   auth0Id: {
     type: String,
     required: true,
