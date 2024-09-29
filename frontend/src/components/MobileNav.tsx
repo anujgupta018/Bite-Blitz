@@ -29,7 +29,7 @@ export default function MobileNav() {
             <span>Welcome to Bite-Blitz</span>
           )}
         </SheetTitle>
-        <Separator />
+        <Separator className="my-6 border-t border-gray-200" />
         <SheetDescription className="flex flex-col gap-4">
           {isAuthenticated ? (
             <MobileNavLinks />

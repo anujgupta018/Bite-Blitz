@@ -5,6 +5,10 @@ import { z } from "zod";
 import DetailsSection from "./DetailsSection";
 import { Separator } from "@/components/ui/separator";
 import CuisinesSection from "./CuisinesSection";
+import MenuSection from "./MenuSection";
+import ImageSection from "./ImageSection";
+import LoadingButton from "@/components/LoadingButton";
+import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   restaurantName: z.string({
@@ -58,6 +62,20 @@ export default function ManageRestaurantFrom({ onSave, isLoading }: Props) {
         <DetailsSection />
         <Separator className="my-6 border-t border-gray-200" />
         <CuisinesSection />
+        <Separator className="my-6 border-t border-gray-200" />
+        <MenuSection />
+        <Separator className="my-6 border-t border-gray-200" />
+        <ImageSection />
+        {isLoading ? (
+          <LoadingButton />
+        ) : (
+          <Button
+            className="bg-gray-700 mt-2 text-white hover:bg-gray-100 hover:text-black"
+            type="submit"
+          >
+            Submit
+          </Button>
+        )}
       </form>
     </Form>
   );
