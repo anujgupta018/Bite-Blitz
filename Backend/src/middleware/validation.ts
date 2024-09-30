@@ -20,13 +20,13 @@ export const validateMyUserRequest = [
     .notEmpty()
     .withMessage("Address must be a String"),
   body("country").isString().notEmpty().withMessage("Country must be a String"),
-  body("city").isString().notEmpty().withMessage("city must be a String"),
+  body("city").isString().notEmpty().withMessage("City must be a String"),
   handleValidationErrors,
 ];
 export const validateMyRestaurantRequest = [
   body("restaurantName").notEmpty().withMessage("Restaurant Name is required"),
-  body("city").notEmpty().withMessage("city is required"),
-  body("country").notEmpty().withMessage("country is required"),
+  body("city").notEmpty().withMessage("City is required"),
+  body("country").notEmpty().withMessage("Country is required"),
   body("deliveryPrice")
     .isFloat({ min: 0 })
     .withMessage("Delivery Price must be a positive number"),
