@@ -53,16 +53,13 @@ export default function ManageRestaurantFrom({ onSave, isLoading }: Props) {
       menuItems: [{ name: "", price: 0 }],
     },
   });
-  const onSubmit = (formDataJson: RestaurantFormData) => {
+  const onSubmit = async (formDataJson: RestaurantFormData) => {
     try {
       const formData = new FormData();
       formData.append("restaurantName", formDataJson.restaurantName);
       formData.append("city", formDataJson.city);
       formData.append("country", formDataJson.country);
-      formData.append(
-        "deliveryPrice",
-        (formDataJson.deliveryPrice * 100).toString()
-      );
+      formData.append("deliveryPrice", formDataJson.deliveryPrice.toString());
       formData.append(
         "estimatedDeliveryTime",
         formDataJson.estimatedDeliveryTime.toString()
@@ -74,16 +71,22 @@ export default function ManageRestaurantFrom({ onSave, isLoading }: Props) {
         formData.append(`menuItems[${index}][name]`, menuItem.name);
         formData.append(
           `menuItems[${index}][price]`,
-          (menuItem.price * 100).toString()
+          menuItem.price.toString()
         );
       });
-      formData.append(`imageFile`, formDataJson.imageFile);
+      // formData.append(`imageFile`, formDataJson.imageFile);
+      if (formDataJson.imageFile) {
+        formData.append("imageFile", formDataJson.imageFile);
+      } else {
+        console.error("Image file is required but was not provided");
+      }
       console.log("Submitting form data:", formDataJson);
       console.log("Menu items:", formDataJson.menuItems);
       for (const [key, value] of formData.entries()) {
         console.log(`${key}: ${value}`);
       }
       onSave(formData);
+      console.log("Restaurant created successfully!");
     } catch (error) {
       console.log(error);
     }

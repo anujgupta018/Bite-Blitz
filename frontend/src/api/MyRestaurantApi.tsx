@@ -15,6 +15,7 @@ export const useCreateMyRestaurant = () => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        // "Content-Type": "multipart/formdata",
       },
       body: restaurantFormData,
     });
@@ -35,7 +36,7 @@ export const useCreateMyRestaurant = () => {
     toast.success("Restaurant created!");
   }
   if (error) {
-    toast.error("Unable to update restaurant");
+    toast.error("Unable to create restaurant");
   }
   return { createRestaurant, isLoading };
 };
