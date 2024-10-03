@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import myUserRoutes from "./routes/myUserRoutes";
 import { v2 as cloudinary } from "cloudinary";
 import myRestaurantRoute from "./routes/MyRestaurantRoute";
+import RestaurantRoute from "./routes/RestaurantRoute";
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(() => {
   console.log("DataBase Connection successful");
@@ -22,6 +23,7 @@ app.use(cors());
 
 app.use("/api/my/user", myUserRoutes);
 app.use("/api/my/restaurant", myRestaurantRoute);
+app.use("/api/restaurant", RestaurantRoute);
 app.listen(7000, () => {
   console.log("Server is running on port 7000");
 });
