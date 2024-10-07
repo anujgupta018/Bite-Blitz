@@ -30,6 +30,7 @@ export default function () {
     setSearchState((prevstate) => ({
       ...prevstate,
       searchQuery: searchFormData.searchQuery,
+      page: 1,
     }));
   };
   const resetSearch = () => {
@@ -59,10 +60,10 @@ export default function () {
         />
         <SearchResultInfo total={results.pagination.total} city={city} />
         {results.data.map((restaurant) => (
-          <SearchResultCard restaurant={restaurant} />
+          <SearchResultCard key={restaurant._id} restaurant={restaurant} />
         ))}
         <PaginationSelector
-          page={results.pagination.page}
+          page={searchState.page}
           pages={results.pagination.pages}
           onPageChange={setPage}
         />
