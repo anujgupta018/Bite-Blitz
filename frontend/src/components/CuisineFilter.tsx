@@ -25,6 +25,7 @@ export default function CuisineFilter({
     onChange(newCuisinesList);
   };
   const handleCuisinesReset = () => onChange([]);
+
   return (
     <>
       <div className="flex justify-between items-center px-2">
@@ -42,7 +43,7 @@ export default function CuisineFilter({
           return (
             <div className="flex">
               <input
-                id={`cuisine_${cuisine} `}
+                id={`cuisine_${cuisine}`}
                 type="checkbox"
                 className="hidden"
                 value={cuisine}

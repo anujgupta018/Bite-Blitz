@@ -14,10 +14,11 @@ export const useSearchRestaurant = (
     try {
       const params = new URLSearchParams();
       params.set("searchQuery", searchState.searchQuery);
-      params.set("page", searchState.page.toString()); // Correcting the parameter case
+      params.set("page", searchState.page.toString());
+      params.set("selectedCuisines", searchState.selectedCuisines.join(","));
 
       const url = `${API_BASE_URL}/api/restaurant/search/${city}?${params.toString()}`;
-      console.log("Fetching URL:", url); // Logging the URL for debugging
+      console.log("Fetching URL:", url);
 
       const response = await fetch(url);
       if (!response.ok) {
@@ -27,7 +28,7 @@ export const useSearchRestaurant = (
       return await response.json();
     } catch (error) {
       console.error("Error fetching restaurants:", error);
-      // Optionally, you can throw the error again to let react-query handle it
+
       throw error;
     }
   };
@@ -41,7 +42,7 @@ export const useSearchRestaurant = (
     createSearchRequest,
     {
       enabled: !!city,
-      retry: false, // Optional: disable automatic retries if the API fails
+      retry: false,
     }
   );
 
